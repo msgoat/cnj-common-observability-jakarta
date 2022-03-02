@@ -1,0 +1,14 @@
+---
+kind: pipeline
+type: kubernetes
+name: docker-build
+
+steps:
+
+  - name: commit-stage
+    image: docker.cloudtrain.aws.msgoat.eu/cloudtrain/cnj-drone-build:2.0.1
+    commands:
+      - mvn clean deploy --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false -DskipTests=true -Dsonar.login=$SONARQUBE_TOKEN
+    environment:
+      SONARQUBE_TOKEN:
+        from_secret: sonarqube_token
