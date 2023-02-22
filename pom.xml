@@ -9,15 +9,15 @@
     <description>Common components to improve observability of cloud-native applications based on Jakarta 9/MicroProfile</description>
     <properties>
         <!-- new Maven version management -->
-        <revision>0.1.0</revision>
+        <revision>1.0.0</revision>
         <sha1></sha1>
         <changelist></changelist>
         <!-- common properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
-        <jakartaee.version>9.1.0</jakartaee.version>
-        <microprofile.version>4.1</microprofile.version>
+        <java.version>17</java.version>
+        <jakartaee.version>10.0.0</jakartaee.version>
+        <microprofile.version>5.0</microprofile.version>
         <slf4j.version>1.7.32</slf4j.version>
         <junit.version>5.6.0</junit.version>
         <mockito.version>3.3.3</mockito.version>

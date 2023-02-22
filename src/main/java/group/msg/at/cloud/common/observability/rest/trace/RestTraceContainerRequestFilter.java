@@ -1,15 +1,15 @@
 package group.msg.at.cloud.common.observability.rest.trace;
 
-import org.eclipse.microprofile.config.ConfigProvider;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.ext.Provider;
+import org.eclipse.microprofile.config.ConfigProvider;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 
 /**
@@ -49,10 +49,10 @@ public class RestTraceContainerRequestFilter implements ContainerRequestFilter {
     }
 
     private RestTraceMessageBuilder getMessageBuilder() {
-        if (this.messageBuilder == null) {
+        if (messageBuilder == null) {
             throw new IllegalStateException("Missing required reference to RestTraceMessageBuilder! Does your MicroProfile server supports CDI-injection in JAX-RS beans?");
         }
-        return this.messageBuilder;
+        return messageBuilder;
     }
 
 }

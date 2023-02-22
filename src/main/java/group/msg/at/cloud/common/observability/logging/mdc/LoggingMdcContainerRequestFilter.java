@@ -1,13 +1,13 @@
 package group.msg.at.cloud.common.observability.logging.mdc;
 
-import org.slf4j.MDC;
-
 import jakarta.annotation.Priority;
 import jakarta.ws.rs.Priorities;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.container.PreMatching;
 import jakarta.ws.rs.ext.Provider;
+import org.slf4j.MDC;
+
 import java.io.IOException;
 import java.security.Principal;
 
