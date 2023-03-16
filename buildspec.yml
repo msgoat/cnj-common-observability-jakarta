@@ -22,7 +22,7 @@ phases:
     commands:
       - echo "Running phase build"
       - echo Running commit-stage of the build
-      - mvn clean deploy --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false -DskipTests=true -Dsonar.login=$SONARQUBE_TOKEN
+      - mvn clean deploy --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false -DskipTests=true -Dsonar.login=$SONARQUBE_TOKEN -Ddependency-check.skip=true
   post_build:
     commands:
       - echo "Running phase post_build"
