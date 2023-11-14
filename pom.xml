@@ -56,7 +56,7 @@
             <!-- JakartaEE 10 runtime dependencies -->
             <dependency>
                 <groupId>jakarta.platform</groupId>
-                <artifactId>jakarta.jakartaee-web-api</artifactId>
+                <artifactId>jakarta.jakartaee-api</artifactId>
                 <version>${jakartaee.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -93,6 +93,12 @@
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.2</version> <!-- should be in the BOM but mvn won't stop complaining! -->
             <scope>provided</scope>
         </dependency>
         <dependency>
