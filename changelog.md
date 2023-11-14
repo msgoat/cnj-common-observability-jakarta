@@ -10,11 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ## [1.1.0] - 2023-11-14
+### Added
+- added OWASP dependency check
+- added git tagging
 ### Changed
 - upgraded all dependencies
 - upgraded all plugins
 - switched logging to SLF4J 2
-- added OWASP dependency check
 
 ## [1.0.0] - 2023-02-22
 ### Changed
