@@ -6,6 +6,7 @@ env:
   parameter-store:
     CLOUDTRAIN_CODEBUILD_GIT_TAG_USER: "CLOUDTRAIN_CODEBUILD_GIT_TAG_USER"
     CLOUDTRAIN_CODEBUILD_GIT_TAG_EMAIL: "CLOUDTRAIN_CODEBUILD_GIT_TAG_EMAIL"
+    CLOUDTRAIN_CODEBUILD_OWASP_SCAN_SKIPPED: "CLOUDTRAIN_CODEBUILD_OWASP_SCAN_SKIPPED"
   secrets-manager:
     NEXUS_USER: "cloudtrain-codebuild-nexus:user"
     NEXUS_PASSWORD: "cloudtrain-codebuild-nexus:password"
@@ -13,6 +14,7 @@ env:
     HARBOR_PASSWORD: "cloudtrain-codebuild-harbor:token"
     SONARQUBE_TOKEN: "cloudtrain-codebuild-sonarqube:token"
     GITHUB_TOKEN: "cloudtrain-codebuild-github:msgoat_pat"
+    NIST_NVD_API_KEY: "cloudtrain-codebuild-nvd-api-key:apiKey"
 
 phases:
   install:
@@ -40,7 +42,7 @@ phases:
       - export VERSION_SHA1=${CODEBUILD_RESOLVED_SOURCE_VERSION:0:8}
       - export PROJECT_VERSION=$VERSION_REVISION.$VERSION_CHANGELIST.$VERSION_SHA1
       - echo "Running commit-stage of the build on version [$PROJECT_VERSION]"
-      - mvn clean deploy --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false -DskipTests=true -Dsonar.login=$SONARQUBE_TOKEN
+      - mvn clean deploy --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false -DskipTests=true -Dsonar.token=$SONARQUBE_TOKEN -Ddependency-check.skip=$CLOUDTRAIN_CODEBUILD_OWASP_SCAN_SKIPPED
       - echo "Tagging branch [$VERSION_CHANGELIST] with git tag [$PROJECT_VERSION] on behalf of CodeBuild initiator [$CODEBUILD_INITIATOR] and GitHub actor [$CODEBUILD_WEBHOOK_ACTOR_ACCOUNT_ID]"
       - git config user.name "$CLOUDTRAIN_CODEBUILD_GIT_TAG_USER"
       - git config user.email "$CLOUDTRAIN_CODEBUILD_GIT_TAG_EMAIL"
